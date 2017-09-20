@@ -1,0 +1,14 @@
+{
+  "name": "sql_test",
+  "version": "1.0.0",
+  "description": "\"Testing CRUD with sqlite\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "\"sql\""
+  ],
+  "author": "\"Vikram Krishnan\"",
+  "license": "ISC"
+}
