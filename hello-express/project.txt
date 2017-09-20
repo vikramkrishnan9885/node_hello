@@ -1,0 +1,243 @@
+
+Set Up a Web API for Your Project
+
+Now that you've practiced using Node.js and Express to build web apps and APIs, it's time to to apply what you've learned to your own course project.
+
+The following guide will walk you through the process of setting up the Node.js project for your application server, and using Express to define routes that align to your app's API.
+Assignment
+
+Create a Node.js application that:
+
+    Uses Express to define routes
+
+    Provides an API with at least 4 endpoints
+
+    Returns JSON data, when appropriate, for HTTP requests
+
+    Returns the static files that make up your app's front-end
+
+Your app should be stored in a GitHub (or local Git) repository.
+Planning Ahead
+Looking at the problem
+
+Before writing code to achieve a goal, you should break the problem down into a set of smaller steps. Here's how we'll approach this part of your project:
+
+    Setup project directory
+
+    Initialize Node.js project
+
+    Define routes that return sample data
+
+In the next module, you will complete this project by hooking your app up to a database. For now, you'll return sample data in place of stored data.
+
+=======================================================
+
+Part 1: Setup Your Project Files
+
+In this section, you will setup the directory for your project, storing your files in a Git repo.
+Before you start...
+
+This assignment assumes you have already developed the client-side part of your project, including HTML, CSS and client-side JavaScript for your webpage(s).
+
+You should have these files stored in a Git repo, and we'll assume you currently have the following file structure:
+
+HTML files at the root of the project folder.
+
+styles/ folder containing CSS stylesheets
+
+scripts/ folder containing client-side JavaScript
+
+For example, you should have a similar set of files directly within your repo:
+
+index.html
+about.html
+order.html
+styles/
+      style.css
+      custom.css
+scripts/
+      script.js
+      slideshow.js
+
+Guide
+
+    Use your file explorer to move your entire set of client-side files into a folder called /public.
+
+Git repo for project:
+
+public/
+ index.html 
+ about.html 
+ order.html 
+ styles/ 
+     style.css 
+     custom.css 
+ scripts/ 
+     script.js 
+     slideshow.js
+
+You will set express app up to serve static client-side files from the public folder.
+
+    In your command line, navigate into your project folder on your computer.
+
+    cd MyProject
+
+    The exact path you use will depend on the location of your folder.
+
+    If for any reason you have not previously set up a Git repo for your project, initialize a Git repo within the folder containing your project files.
+
+    Initialize a Node.js project within the root of your project folder.
+
+    npm init
+
+    You will be prompted to enter fields for the package.json file that will be created.
+
+        Enter a name that makes sense for your app
+
+        Enter your name as the author
+
+        Enter server.js as the entry point.
+
+        At the end of this step, you should have a package.json file in the root your project folder.
+
+    Install Express and save it as a dependency for your project.
+
+    npm install express --save
+
+    This should install Express, add it to a node_modules folder within your project folder, and list it as a dependency in your package.json file.
+
+    Verify the following:
+
+        Your folder should contain a node_modules folder. You should see your Express installation within that folder.
+
+        Your folder should contain a package.json file with the appropriate fields for your app.
+
+        Your folder should contain a public/ folder, which contains your HTML, CSS and JavaScript files for your front-end.
+
+=====================================================================
+
+Part 2: Create a Node.js Server
+
+In this section, you will setup a basic web application server with Node.js.
+Guide
+
+    Open your project folder in Visual Studio Code. Make sure to open using the Open Folder view so that you can easily see and navigate all files within your folder.
+
+    Create a file in your project folder root called server.js.
+
+    Add Express to your project and create an Express app object.
+
+    var express = require('express');
+    var app = express();
+
+    Instruct the express app to listen on port 3000, or another port of your choice. The server should then print a message to the console to make it easier for you to ensure your server is running.
+
+     app.listen(3000, function(){
+         console.log("Server is listening on port 3000");
+     });
+
+    Run your server and verify that the message is printed to your console.
+
+    node server.js
+
+=====================================================================
+
+Guide
+
+    In your command line, navigate into your project folder on your computer.
+
+    cd MyProject
+
+    The exact path you use will depend on the location of your folder.
+
+    Initialize a Node.js project within the root of your project folder.
+
+    npm init
+
+    You will be prompted to enter fields for the package.json file that will be created.
+
+        Enter a name that makes sense for your app
+
+        Enter your name as the author
+
+        Enter server.js as the entry point.
+
+        At the end of this step, you should have a package.json file in the root your project folder.
+
+    Install Express and save it as a dependency for your project.
+
+    npm install express --save
+
+    This should install Express, add it to a node_modules folder within your project folder, and list it as a dependency in your package.json file.
+
+    Verify the following:
+
+        Your folder should contain a node_modules folder. You should see your Express installation within that folder.
+
+        Your folder should contain a package.json file with the appropriate fields for your app.
+
+        Your folder should contain a public/ folder, which contains your HTML, CSS and JavaScript files for your front-end. 
+
+=========================================================================
+Part 3: Setup Your API
+
+In this section, you will use Express to define routes that correspond to the API your back-end will provide.
+What API Endpoints Will You Define?
+
+Remember, API endpoints generally align with CRUD operations that you want to allow clients to do with your data. These operations roughly align with HTTP request methods that clients will use to access your back-end.
+
+    Create data: POST, PUT
+
+    Read data: GET
+
+    Update data: POST, PUT
+
+    Delete data: DELETE
+
+Remember that an endpoint consists of an HTTP request method type + a path.
+
+Some examples:
+
+    GET /
+
+    POST /users
+
+    PUT /user
+
+    DELETE /user
+    Guide
+
+    Identify at least 4 API endpoints that you will define in your app.
+
+For each endpoint:
+
+    Use the appropriate express app.METHOD method to define a route to handle HTTP requests for that endpoint.
+
+    NOTE: The app.METHOD methods correspond to the HTTP request method types:
+        app.get
+        app.post
+        app.put
+
+        app.delete
+
+        NOTE: The syntax for using these methods is:
+
+        app.METHOD(path, callback);
+
+        Where METHOD is one of the HTTP request methods listed above, path is the path that you are expecting the request to be sent to, and callback is a function you provide that specifies what should happen when your server receives this request.
+
+    For now, within the callback function for each route, simply return a string message that describes what your function should do or what data it should later return. You'll complete these functions once you hook up to a database in the next module.
+
+    For example:
+
+     app.get('/items', function(request, response){
+         response.send("This function will return a list of all stored items");
+     });
+
+    Test each route to ensure that each endpoing performs the appropriate action and returns the appropriate sample response. 
+
+============================================================================
+
+
+
+

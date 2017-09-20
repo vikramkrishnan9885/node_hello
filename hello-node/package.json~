@@ -1,0 +1,22 @@
+{
+  "name": "hello-node",
+  "version": "1.0.0",
+  "description": "\"My first node project\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikramkrishnan9885/node_hello.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Vikram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vikramkrishnan9885/node_hello/issues"
+  },
+  "homepage": "https://github.com/vikramkrishnan9885/node_hello#readme"
+}
